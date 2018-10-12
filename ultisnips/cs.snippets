@@ -1,0 +1,60 @@
+snippet t "test"
+[Test]
+public void ${1:ShouldDoSomething}()
+{
+	$0
+}
+endsnippet
+
+snippet { "close bracket" i
+
+{
+	$0
+}
+endsnippet
+
+snippet n "namespace"
+namespace `!v substitute(substitute(expand("%:h"), "src\\\\\\|src\\/", "", ""), "\\\\\\|\\/", ".", "g")`
+{
+	$0
+}
+endsnippet
+
+snippet c "class"
+public class `!v expand("%:t:r")`
+{
+	$0
+}
+endsnippet
+
+snippet tf "test fixture"
+[TestFixture]
+public class `!v expand("%:t:r")`
+{
+	$0
+}
+endsnippet
+
+snippet i "interface"
+public interface I`!v expand("%:t:r")`
+{
+	$0
+}
+endsnippet
+
+snippet ts "test setup"
+[SetUp]
+public void SetUp()
+{
+	$0
+}
+endsnippet
+
+snippet tt "test teardown"
+[TearDown]
+public void TearDown() => mockRepository.VerifyAll();
+endsnippet
+
+snippet nie "not implemented exception"
+throw new System.NotImplementedException();
+endsnippet

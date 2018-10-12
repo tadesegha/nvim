@@ -1,0 +1,37 @@
+snippet func "define an es6 function"
+const ${1:name} = (${2}) => {
+	$0
+}
+endsnippet
+
+snippet ({ "close bracket" i
+(\{
+	$0
+\});
+endsnippet
+
+snippet [ "close square bracket"
+[
+	$0
+]
+endsnippet
+
+snippet react "boiler plate for a react component"
+import React, { Component } from 'react';
+import { Text } from 'react-native';
+
+export default class ${1:Component} extends Component {
+	render = () => (
+		<Text>This is the $1 component</Text>
+	)
+}
+endsnippet
+snippet { "close bracket"
+\{
+	$0
+\}
+endsnippet
+
+snippet import "import using es6 modules"
+import \{ ${1:object} \} from '${2:location}';
+endsnippet
