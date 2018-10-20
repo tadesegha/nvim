@@ -12,7 +12,6 @@ set numberwidth=2
 set listchars=eol:¬,trail:·,tab:»\
 set list
 set expandtab
-set wildignore+=*node_modules/*
 
 colorscheme nova
 
@@ -25,6 +24,10 @@ if (executable('powershell'))
   let g:termShell = 'powershell'
 endif
 
+" auto-pairs settings
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = "<c-]>"
+
 " ale settings
 let g:ale_linters = { 'cs': ['OmniSharp'], 'javascript': ['eslint'] }
 let g:ale_fixers = {
@@ -33,20 +36,9 @@ let g:ale_fixers = {
       \}
 let g:ale_fix_on_save = 1
 
+" ultisnips settings
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-
-let mapleader = " "
-
-" key mappings
-nnoremap <space><space> <c-^>
-nnoremap <c-e> :FZF<cr>
-nnoremap <esc> :nohlsearch<cr>
-nnoremap <c-q> :Sayonara!<cr>
-nnoremap <c-z> :Term<cr>
-nnoremap <Leader>rc :e $MYVIMRC<cr>
-tnoremap <c-z> <c-\><c-n><c-^>
-tnoremap <c-q> <c-\><c-n>:bd!<cr>
 
 " minpac settings
 packadd minpac
@@ -62,6 +54,7 @@ call minpac#add('tadesegha/vim-Term')
 call minpac#add('tadesegha/vim-csharp', {'type': 'opt'})
 call minpac#add('trevordmiller/nova-vim')
 call minpac#add('w0rp/ale', {'type': 'opt'})
+call minpac#add('jiangmiao/auto-pairs')
 
 " omnisharp settings
 let g:OmniSharp_timeout = 5
@@ -69,6 +62,26 @@ if !(has('win32') || has('win64'))
   let g:OmniSharp_server_use_mono = 1
   let g:OmniSharp_server_path = expand('$HOME') . '/.omnisharp/omnisharp-roslyn/OmniSharp.exe'
 endif
+
+let mapleader = " "
+
+" key mappings
+nnoremap <space><space> <c-^>
+nnoremap <c-e> :FZF<cr>
+nnoremap <esc> :nohlsearch<cr>
+nnoremap <c-q> :Sayonara!<cr>
+nnoremap <c-z> :Term<cr>
+nnoremap <Leader>rc :e $MYVIMRC<cr>
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+tnoremap <c-z> <c-\><c-n><c-^>
+tnoremap <c-q> <c-\><c-n>:bd!<cr>
+tnoremap <c-h> <c-\><c-n><c-w>h
+tnoremap <c-l> <c-\><c-n><c-w>l
+nnoremap <c-j> <c-\><c-n><c-w>j
+nnoremap <c-k> <c-\><c-n><c-w>k
 
 augroup help
   autocmd!

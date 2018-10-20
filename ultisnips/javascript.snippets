@@ -1,19 +1,11 @@
-snippet func "define an es6 function"
+snippet af "define an anonymous function" i
+() => $0
+endsnippet
+
+snippet nf "define a named function"
 const ${1:name} = (${2}) => {
 	$0
 }
-endsnippet
-
-snippet ({ "close bracket" i
-(\{
-	$0
-\});
-endsnippet
-
-snippet [ "close square bracket"
-[
-	$0
-]
 endsnippet
 
 snippet react "boiler plate for a react component"
@@ -26,12 +18,11 @@ export default class ${1:Component} extends Component {
 	)
 }
 endsnippet
-snippet { "close bracket"
-\{
-	$0
-\}
+
+snippet id "import default"
+import ${1:object} from "${2:location}";
 endsnippet
 
-snippet import "import using es6 modules"
-import \{ ${1:object} \} from '${2:location}';
+snippet in "import module"
+import \{ ${1:object} \} from "${2:location}";
 endsnippet
