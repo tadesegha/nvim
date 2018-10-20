@@ -13,7 +13,7 @@ set listchars=eol:¬,trail:·,tab:»\
 set list
 set expandtab
 
-colorscheme nova
+silent! colorscheme nova
 
 if (executable('ag'))
   set grepprg=ag\ --nogroup\ --nocolor
@@ -66,8 +66,8 @@ endif
 let mapleader = " "
 
 " key mappings
-nnoremap <space><space> <c-^>
-nnoremap <c-e> :FZF<cr>
+nnoremap <Leader><Leader> <c-^>
+nnoremap <Leader>e :FZF<cr>
 nnoremap <esc> :nohlsearch<cr>
 nnoremap <c-q> :Sayonara!<cr>
 nnoremap <c-z> :Term<cr>
@@ -80,8 +80,8 @@ tnoremap <c-z> <c-\><c-n><c-^>
 tnoremap <c-q> <c-\><c-n>:bd!<cr>
 tnoremap <c-h> <c-\><c-n><c-w>h
 tnoremap <c-l> <c-\><c-n><c-w>l
-nnoremap <c-j> <c-\><c-n><c-w>j
-nnoremap <c-k> <c-\><c-n><c-w>k
+tnoremap <c-j> <c-\><c-n><c-w>j
+tnoremap <c-k> <c-\><c-n><c-w>k
 
 augroup help
   autocmd!
@@ -124,13 +124,7 @@ augroup json
   autocmd FileType json nnoremap <buffer> <Leader>cf :%! python -m json.tool<cr>
 augroup END
 
-if has('win32') || has('win64')
-  augroup cmderWorkaround
-    autocmd!
-
-    autocmd VimEnter * colorscheme nova
-  augroup END
-endif
+execute "source " . expand('<sfile>:h') . '/init.windows.vim'
 
 let initLocal = expand('<sfile>:h') . '/init.local.vim'
 if (filereadable(initLocal))
