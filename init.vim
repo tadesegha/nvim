@@ -40,6 +40,10 @@ let g:ale_fix_on_save = 1
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
+function! s:compileRoslyn(hooktype, name)
+  call system("cd src/OmniSharp.Http.Driver; msbuild /v:q /t:restore,rebuild")
+endfunction
+
 " minpac settings
 packadd minpac
 call minpac#init()
@@ -48,6 +52,7 @@ call minpac#add('junegunn/fzf.vim')
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('mhinz/vim-sayonara')
 call minpac#add('omnisharp/omnisharp-vim', {'type': 'opt'})
+call minpac#add('omnisharp/omnisharp-roslyn', {'type': 'opt', 'do': function('s:compileRoslyn')})
 call minpac#add('sheerun/vim-polyglot')
 call minpac#add('sirver/ultisnips', {'type': 'opt'})
 call minpac#add('tadesegha/vim-Term')
@@ -58,16 +63,13 @@ call minpac#add('jiangmiao/auto-pairs')
 
 " omnisharp settings
 let g:OmniSharp_timeout = 5
-if !(has('win32') || has('win64'))
-  let g:OmniSharp_server_use_mono = 1
-  let g:OmniSharp_server_path = expand('$HOME') . '/.omnisharp/omnisharp-roslyn/OmniSharp.exe'
-endif
 
 let mapleader = " "
 
 " key mappings
 nnoremap <Leader><Leader> <c-^>
 nnoremap <Leader>e :FZF<cr>
+nnoremap <Leader>b :Buffers<cr>
 nnoremap <esc> :nohlsearch<cr>
 nnoremap <c-q> :Sayonara!<cr>
 nnoremap <c-z> :Term<cr>
@@ -124,9 +126,13 @@ augroup json
   autocmd FileType json nnoremap <buffer> <Leader>cf :%! python -m json.tool<cr>
 augroup END
 
-execute "source " . expand('<sfile>:h') . '/init.windows.vim'
-
 let initLocal = expand('<sfile>:h') . '/init.local.vim'
 if (filereadable(initLocal))
   execute "source " . initLocal
+endif
+
+if has('win32') || has('win64')
+  execute "source " . expand('<sfile>:h') . '/init.windows.vim'
+else
+  execute "source " . expand('<sfile>:h') . '/init.mac.vim'
 endif
