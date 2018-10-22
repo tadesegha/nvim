@@ -41,7 +41,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
 function! s:compileRoslyn(hooktype, name)
-  call system("cd src/OmniSharp.Http.Driver; msbuild /v:q /t:restore,rebuild")
+  call jobstart("cd src/OmniSharp.Http.Driver; msbuild /v:q /t:restore,rebuild")
 endfunction
 
 " minpac settings
