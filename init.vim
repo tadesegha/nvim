@@ -24,10 +24,6 @@ if (executable('powershell'))
   let g:termShell = 'powershell'
 endif
 
-" auto-pairs settings
-let g:AutoPairsFlyMode = 1
-let g:AutoPairsShortcutBackInsert = "<c-]>"
-
 " ale settings
 let g:ale_linters = { 'cs': ['OmniSharp'], 'javascript': ['eslint'] }
 let g:ale_fixers = {
