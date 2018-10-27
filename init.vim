@@ -20,8 +20,8 @@ if (executable('ag'))
   let $FZF_DEFAULT_COMMAND = 'ag -g . --ignore build --ignore bin --ignore obj --ignore node_modules'
 endif
 
-if (executable('powershell'))
-  let g:termShell = 'powershell'
+if (executable('bash'))
+  let g:termShell = 'bash'
 endif
 
 " ale settings
@@ -61,13 +61,14 @@ call minpac#add('jiangmiao/auto-pairs')
 let g:OmniSharp_timeout = 5
 
 let mapleader = " "
+let maplocalleader = ","
 
 " key mappings
 nnoremap <Leader><Leader> <c-^>
 nnoremap <Leader>e :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <esc> :nohlsearch<cr>
-nnoremap <c-q> :Sayonara!<cr>
+nnoremap <Leader>q :Sayonara!<cr>
 nnoremap <c-z> :Term<cr>
 nnoremap <Leader>rc :e $MYVIMRC<cr>
 nnoremap <c-h> <c-w>h
