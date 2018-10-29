@@ -69,7 +69,7 @@ nnoremap <Leader>e :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <esc> :nohlsearch<cr>
 nnoremap <Leader>q :Sayonara!<cr>
-nnoremap <c-z> :Term<cr>
+nnoremap <c-z> :call term#defaultTerm()<cr>i
 nnoremap <Leader>rc :e $MYVIMRC<cr>
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
@@ -122,6 +122,22 @@ augroup json
   autocmd!
   autocmd FileType json nnoremap <buffer> <Leader>cf :%! python -m json.tool<cr>
 augroup END
+
+" utility functions
+function! FindUpwardInPath(absolutePath, pattern)
+  let components = split(a:absolutePath, '\')
+
+  let parent = components[0]
+  for component in components[1: ]
+    let parent = parent . '\' . component
+    let file = expand(parent . '\' . a:pattern)
+    if (filereadable(file))
+      return file
+    endif
+  endfor
+
+  echoerr "file matching pattern not found. pattern: " . pattern . " | path: " . absolutePath
+endfunction
 
 let initLocal = expand('<sfile>:h') . '/init.local.vim'
 if (filereadable(initLocal))
