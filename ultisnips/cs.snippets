@@ -1,5 +1,21 @@
+snippet mf "mock field"
+private Mock<I${1/^./\u$0/}$0> ${1:name};
+endsnippet
+
+snippet f "field"
+private ${1:Type} ${1/^./\l$0/}$0;
+endsnippet
+
+snippet cm "create mock"
+$1 = CreateMock<I${1/^./\u$0/}$0>();
+endsnippet
+
+snippet ms "mock setup"
+${1:mockObject}.Setup(x => x.${2:Method}(${3:parameters})).Returns(${4:returnObject});
+endsnippet
+
 snippet t "test"
-[Test]
+[Test, Description(""), Category("Unit")]
 public void ${1:ShouldDoSomething}()
 {
 	$0
@@ -14,7 +30,7 @@ snippet { "close bracket" i
 endsnippet
 
 snippet n "namespace"
-namespace `!v substitute(substitute(expand("%:h"), "src\\\\\\|src\\/", "", ""), "\\\\\\|\\/", ".", "g")`
+namespace `!v csharp#namespace()`
 {
 	$0
 }
@@ -48,6 +64,7 @@ public void SetUp()
 {
 	$0
 }
+
 endsnippet
 
 snippet tt "test teardown"

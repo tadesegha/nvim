@@ -63,6 +63,9 @@ let g:OmniSharp_timeout = 5
 let mapleader = " "
 let maplocalleader = ","
 
+" noop key mappings
+nnoremap :w :throw "you should be using <c-s> to save"
+
 " key mappings
 nnoremap <Leader><Leader> <c-^>
 nnoremap <Leader>e :FZF<cr>
@@ -75,6 +78,10 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
+nnoremap <c-s> :write<cr>
+nnoremap <Leader>> :ALENextWrap<cr>
+nnoremap <Leader>< :ALEPreviousWrap<cr>
+
 tnoremap <c-z> <c-\><c-n><c-^>
 tnoremap <c-q> <c-\><c-n>:bd!<cr>
 tnoremap <c-h> <c-\><c-n><c-w>h
