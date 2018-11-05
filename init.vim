@@ -64,7 +64,7 @@ let mapleader = " "
 let maplocalleader = ","
 
 " noop key mappings
-nnoremap :w :throw "you should be using <c-s> to save"
+nnoremap :w<cr> :throw "you should be using <c-s> to save"<cr>
 
 " key mappings
 nnoremap <Leader><Leader> <c-^>
@@ -88,6 +88,8 @@ tnoremap <c-h> <c-\><c-n><c-w>h
 tnoremap <c-l> <c-\><c-n><c-w>l
 tnoremap <c-j> <c-\><c-n><c-w>j
 tnoremap <c-k> <c-\><c-n><c-w>k
+
+imap <c-s> <esc><c-s>
 
 augroup help
   autocmd!
