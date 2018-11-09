@@ -12,8 +12,9 @@ set numberwidth=2
 set listchars=eol:¬,trail:·,tab:»\
 set list
 set expandtab
+set background=dark
 
-silent! colorscheme nova
+silent! colorscheme one
 
 if (executable('ag'))
   set grepprg=ag\ --nogroup\ --nocolor
@@ -36,10 +37,6 @@ let g:ale_fix_on_save = 1
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
-function! s:compileRoslyn(hooktype, name)
-  call jobstart("cd src/OmniSharp.Http.Driver; msbuild /v:q /t:restore,rebuild")
-endfunction
-
 " minpac settings
 packadd minpac
 call minpac#init()
@@ -48,15 +45,15 @@ call minpac#add('junegunn/fzf.vim')
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('mhinz/vim-sayonara')
 call minpac#add('omnisharp/omnisharp-vim', {'type': 'opt'})
-call minpac#add('omnisharp/omnisharp-roslyn', {'type': 'opt', 'do': function('s:compileRoslyn')})
 call minpac#add('sheerun/vim-polyglot')
 call minpac#add('sirver/ultisnips', {'type': 'opt'})
 call minpac#add('tadesegha/vim-Term')
 call minpac#add('tadesegha/vim-csharp', {'type': 'opt'})
-call minpac#add('trevordmiller/nova-vim')
 call minpac#add('w0rp/ale', {'type': 'opt'})
 call minpac#add('jiangmiao/auto-pairs')
 call minpac#add('ludovicchabant/vim-gutentags', {'type': 'opt'})
+call minpac#add('trevordmiller/nova-vim')
+call minpac#add('rakr/vim-one')
 
 " omnisharp settings
 let g:OmniSharp_timeout = 5
