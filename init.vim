@@ -56,6 +56,7 @@ call minpac#add('tadesegha/vim-csharp', {'type': 'opt'})
 call minpac#add('trevordmiller/nova-vim')
 call minpac#add('w0rp/ale', {'type': 'opt'})
 call minpac#add('jiangmiao/auto-pairs')
+call minpac#add('ludovicchabant/vim-gutentags', {'type': 'opt'})
 
 " omnisharp settings
 let g:OmniSharp_timeout = 5
@@ -112,9 +113,14 @@ augroup END
 
 augroup javascript
   autocmd!
+  autocmd Filetype typescript set filetype=javascript
+
   autocmd Filetype javascript packadd ultisnips
   autocmd Filetype javascript packadd ale
-  autocmd Filetype typescript set filetype=javascript
+  autocmd Filetype javascript packadd vim-gutentags
+
+  autocmd Filetype javascript nnoremap <buffer> <LocalLeader>gd <c-]>
+  autocmd Filetype javascript nnoremap <buffer> <LocalLeader>vgd :vs<cr><c-]>
 augroup END
 
 augroup css
@@ -129,7 +135,7 @@ augroup END
 
 augroup json
   autocmd!
-  autocmd FileType json nnoremap <buffer> <Leader>cf :%! python -m json.tool<cr>
+  autocmd FileType json nnoremap <buffer> <LocalLeader>cf :%! python -m json.tool<cr>
 augroup END
 
 " utility functions
