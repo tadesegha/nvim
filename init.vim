@@ -105,6 +105,7 @@ augroup END
 augroup quickfix
   autocmd!
   autocmd Filetype qf 20wincmd_
+  autocmd Filetype qf nnoremap <buffer> <esc> :cclose<cr>
   autocmd BufLeave * if &buftype == "quickfix" | cclose | endif
 augroup END
 
