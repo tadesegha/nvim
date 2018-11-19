@@ -45,6 +45,7 @@ call minpac#add('junegunn/fzf.vim')
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('mhinz/vim-sayonara')
 call minpac#add('omnisharp/omnisharp-vim', {'type': 'opt'})
+call minpac#add('omnisharp/omnisharp-roslyn', {'type': 'opt'})
 call minpac#add('sheerun/vim-polyglot')
 call minpac#add('sirver/ultisnips', {'type': 'opt'})
 call minpac#add('tadesegha/vim-Term')
@@ -54,9 +55,6 @@ call minpac#add('jiangmiao/auto-pairs')
 call minpac#add('ludovicchabant/vim-gutentags', {'type': 'opt'})
 call minpac#add('trevordmiller/nova-vim')
 call minpac#add('rakr/vim-one')
-
-" omnisharp settings
-let g:OmniSharp_timeout = 5
 
 let mapleader = " "
 let maplocalleader = ","
