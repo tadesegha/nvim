@@ -77,8 +77,6 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-s> :write<cr>
-nnoremap <Leader>> :ALENextWrap<cr>
-nnoremap <Leader>< :ALEPreviousWrap<cr>
 
 tnoremap <c-z> <c-\><c-n><c-^>
 tnoremap <c-q> <c-\><c-n>:bd!<cr>
