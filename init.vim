@@ -70,18 +70,11 @@ nnoremap <esc> :nohlsearch<cr>
 nnoremap <Leader>q :Sayonara!<cr>
 nnoremap <c-z> :call term#defaultTerm()<cr>i
 nnoremap <Leader>rc :e $MYVIMRC<cr>
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
+nnoremap <Leader>h <c-w>h
+nnoremap <Leader>l <c-w>l
+nnoremap <Leader>j <c-w>j
+nnoremap <Leader>k <c-w>k
 nnoremap <c-s> :write<cr>
-
-tnoremap <c-z> <c-\><c-n><c-^>
-tnoremap <c-q> <c-\><c-n>:bd!<cr>
-tnoremap <c-h> <c-\><c-n><c-w>h
-tnoremap <c-l> <c-\><c-n><c-w>l
-tnoremap <c-j> <c-\><c-n><c-w>j
-tnoremap <c-k> <c-\><c-n><c-w>k
 
 imap <c-s> <esc><c-s>
 
