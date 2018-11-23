@@ -1,8 +1,8 @@
 " settings
 set noswapfile
 set relativenumber
-set tabstop=2
-set shiftwidth=2
+" set tabstop=2
+" set shiftwidth=2
 set hidden
 set ignorecase
 set smartcase
@@ -52,7 +52,6 @@ call minpac#add('tadesegha/vim-Term')
 call minpac#add('tadesegha/vim-csharp', {'type': 'opt'})
 call minpac#add('w0rp/ale', {'type': 'opt'})
 call minpac#add('jiangmiao/auto-pairs')
-call minpac#add('ludovicchabant/vim-gutentags', {'type': 'opt'})
 call minpac#add('trevordmiller/nova-vim')
 call minpac#add('rakr/vim-one')
 
@@ -104,7 +103,6 @@ augroup javascript
 
   autocmd Filetype javascript packadd ultisnips
   autocmd Filetype javascript packadd ale
-  autocmd Filetype javascript packadd vim-gutentags
 
   autocmd Filetype javascript nnoremap <buffer> <LocalLeader>gd <c-]>
   autocmd Filetype javascript nnoremap <buffer> <LocalLeader>vgd :vs<cr><c-]>
