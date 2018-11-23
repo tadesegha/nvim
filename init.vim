@@ -74,8 +74,6 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-s> :write<cr>
-nnoremap <Leader>> :ALENextWrap<cr>
-nnoremap <Leader>< :ALEPreviousWrap<cr>
 
 tnoremap <c-z> <c-\><c-n><c-^>
 tnoremap <c-q> <c-\><c-n>:bd!<cr>
@@ -102,6 +100,7 @@ augroup END
 augroup quickfix
   autocmd!
   autocmd Filetype qf 20wincmd_
+  autocmd Filetype qf nnoremap <buffer> <esc> :cclose<cr>
   autocmd BufLeave * if &buftype == "quickfix" | cclose | endif
 augroup END
 

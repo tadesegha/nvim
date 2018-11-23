@@ -1,5 +1,12 @@
+snippet fe
+foreach(var ${2:variable} in ${1:collection})
+{
+	$0
+}
+endsnippet
+
 snippet out
-System.Console.WriteLine("$1");$0
+System.Console.WriteLine($1);$0
 endsnippet
 
 snippet mf "mock field"
