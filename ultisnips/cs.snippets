@@ -1,3 +1,7 @@
+snippet templog
+private void TempLog(string message) => System.IO.File.AppendAllLines(@"c:\users\tolu_adesegha\temp\log.txt", new[] {message});
+endsnippet
+
 snippet fe
 foreach(var ${2:variable} in ${1:collection})
 {

@@ -54,6 +54,8 @@ call minpac#add('w0rp/ale', {'type': 'opt'})
 call minpac#add('jiangmiao/auto-pairs')
 call minpac#add('trevordmiller/nova-vim')
 call minpac#add('rakr/vim-one')
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('tpope/vim-surround')
 
 let mapleader = " "
 let maplocalleader = ","
@@ -74,6 +76,8 @@ nnoremap <Leader>l <c-w>l
 nnoremap <Leader>j <c-w>j
 nnoremap <Leader>k <c-w>k
 nnoremap <c-s> :write<cr>
+
+tnoremap <LocalLeader><LocalLeader> <c-\><c-n>
 
 imap <c-s> <esc><c-s>
 
