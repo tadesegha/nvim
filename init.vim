@@ -33,6 +33,9 @@ let g:ale_fix_on_save = 1
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
+" omnisharp settings
+let g:OmniSharp_timeout = 5
+
 " minpac settings
 packadd minpac
 call minpac#init()
