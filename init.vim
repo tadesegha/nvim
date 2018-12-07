@@ -1,8 +1,8 @@
 " settings
 set noswapfile
 set relativenumber
-" set tabstop=2
-" set shiftwidth=2
+set tabstop=2
+set shiftwidth=2
 set hidden
 set ignorecase
 set smartcase
@@ -19,10 +19,6 @@ silent! colorscheme one
 if (executable('ag'))
   set grepprg=ag\ --nogroup\ --nocolor
   let $FZF_DEFAULT_COMMAND = 'ag -g . --ignore build --ignore bin --ignore obj --ignore node_modules'
-endif
-
-if (executable('bash'))
-  let g:termShell = 'bash'
 endif
 
 " ale settings
