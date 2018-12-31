@@ -14,7 +14,7 @@ set list
 set expandtab
 set background=dark
 
-silent! colorscheme one
+silent! colorscheme night-owl
 
 if (executable('ag'))
   set grepprg=ag\ --nogroup\ --nocolor
