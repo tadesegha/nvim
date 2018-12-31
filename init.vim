@@ -52,6 +52,7 @@ call minpac#add('tadesegha/vim-csharp', {'type': 'opt'})
 call minpac#add('w0rp/ale', {'type': 'opt'})
 call minpac#add('rakr/vim-one')
 call minpac#add('tpope/vim-fugitive')
+call minpac#add('haishanh/night-owl.vim')
 
 let mapleader = " "
 let maplocalleader = ","
