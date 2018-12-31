@@ -50,11 +50,8 @@ call minpac#add('sirver/ultisnips', {'type': 'opt'})
 call minpac#add('tadesegha/vim-Term')
 call minpac#add('tadesegha/vim-csharp', {'type': 'opt'})
 call minpac#add('w0rp/ale', {'type': 'opt'})
-call minpac#add('jiangmiao/auto-pairs')
-call minpac#add('trevordmiller/nova-vim')
 call minpac#add('rakr/vim-one')
 call minpac#add('tpope/vim-fugitive')
-call minpac#add('tpope/vim-surround')
 
 let mapleader = " "
 let maplocalleader = ","
