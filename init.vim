@@ -39,6 +39,8 @@ let g:OmniSharp_timeout = 5
 " minpac settings
 packadd minpac
 call minpac#init()
+call minpac#add('tadesegha/vim-Term')
+call minpac#add('tadesegha/vim-csharp', {'type': 'opt'})
 call minpac#add('junegunn/fzf')
 call minpac#add('junegunn/fzf.vim')
 call minpac#add('k-takata/minpac', {'type': 'opt'})
@@ -47,10 +49,7 @@ call minpac#add('omnisharp/omnisharp-vim', {'type': 'opt'})
 call minpac#add('omnisharp/omnisharp-roslyn', {'type': 'opt'})
 call minpac#add('sheerun/vim-polyglot')
 call minpac#add('sirver/ultisnips', {'type': 'opt'})
-call minpac#add('tadesegha/vim-Term')
-call minpac#add('tadesegha/vim-csharp', {'type': 'opt'})
 call minpac#add('w0rp/ale', {'type': 'opt'})
-call minpac#add('rakr/vim-one')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('haishanh/night-owl.vim')
 

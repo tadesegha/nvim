@@ -51,31 +51,40 @@ namespace `!v csharp#namespace()`
 }
 endsnippet
 
-snippet c "class"
-public class `!v expand("%:t:r")`
+snippet tc "test class"
+using NUnit.Framework;
+
+namespace `!v csharp#namespace()`
 {
-	$0
+	[TestFixture]
+	public class `!v expand("%:t:r")`
+	{
+		[SetUp]
+		public void SetUp()
+		{
+		}
+
+		[Test, Description(""), Category("Unit")]
+		public void ${1:Should}()
+		{
+			$0
+		}
+	}
 }
 endsnippet
 
-snippet tf "test fixture"
-[TestFixture]
-public class `!v expand("%:t:r")`
+snippet c "class"
+namespace `!v csharp#namespace()`
 {
-	$0
+	public class `!v expand("%:t:r")`
+	{
+		$0
+	}
 }
 endsnippet
 
 snippet i "interface"
 public interface I`!v expand("%:t:r")`
-{
-	$0
-}
-endsnippet
-
-snippet ts "test setup"
-[SetUp]
-public void SetUp()
 {
 	$0
 }
