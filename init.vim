@@ -25,6 +25,7 @@ endif
 let g:ale_linters = { 'cs': ['OmniSharp'], 'javascript': ['eslint'] }
 let g:ale_fixers = {
       \'javascript': ['eslint', 'prettier'],
+      \'html': [],
       \'*': ['remove_trailing_lines', 'trim_whitespace']
       \}
 let g:ale_fix_on_save = 1
