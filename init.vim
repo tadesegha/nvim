@@ -109,8 +109,8 @@ augroup END
 augroup quickfix
   autocmd!
   autocmd Filetype qf 20wincmd_
-  autocmd Filetype qf nnoremap <buffer> <esc> :cclose<cr>
-  autocmd BufLeave * if &buftype == "quickfix" | cclose | endif
+  autocmd Filetype qf nnoremap <buffer> <esc> :silent! cclose \| lclose<cr>
+  autocmd BufLeave * if &buftype == "quickfix" && (getwininfo(win_getid())[0]['loclist'] == 0) | cclose | else | lclose | endif
 augroup END
 
 augroup javascript

@@ -1,5 +1,5 @@
 " node plugins
-call remote#host#RegisterPlugin('node', 'C:/Users/tades/AppData/Local/nvim/pack/minpac/start/nvim-typescript/rplugin/node/nvim_typescript', [
+call remote#host#RegisterPlugin('node', 'C:/Users/tolu_adesegha/AppData/Local/nvim/pack/minpac/start/nvim-typescript/rplugin/node/nvim_typescript', [
       \ {'sync': v:false, 'name': 'TSType', 'type': 'command', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSTypeDef', 'type': 'command', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSImport', 'type': 'command', 'opts': {}},
