@@ -53,6 +53,8 @@ call minpac#add('sirver/ultisnips', {'type': 'opt'})
 call minpac#add('w0rp/ale', {'type': 'opt'})
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('haishanh/night-owl.vim')
+call minpac#add('HerringtonDarkholme/yats.vim')
+call minpac#add('mhartington/nvim-typescript', { 'do': './install.sh' })
 
 let mapleader = " "
 let maplocalleader = ","
@@ -66,6 +68,7 @@ nnoremap <Leader>e :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <esc> :nohlsearch<cr>
 nnoremap <Leader>q :Sayonara!<cr>
+nnoremap <Leader>Q :bd<cr>
 nnoremap <c-z> :call term#defaultTerm()<cr>i
 nnoremap <Leader>rc :e $MYVIMRC<cr>
 nnoremap <Leader>h <c-w>h
@@ -91,6 +94,18 @@ augroup csharp
   autocmd Filetype cs packadd ale
 augroup END
 
+augroup typescript
+  autocmd!
+
+  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fu :TSRef<cr>
+  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>gd :TSDef<cr>
+  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>gt :TSTypeDef<cr>
+  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fm :TSGetDocSymbols<cr>
+  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fs :TSGetWorkspaceSymbols<cr>
+  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fx :TSImport<cr>
+  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>/ :TSSearchFZF<cr>
+augroup END
+
 augroup quickfix
   autocmd!
   autocmd Filetype qf 20wincmd_
@@ -100,8 +115,6 @@ augroup END
 
 augroup javascript
   autocmd!
-  autocmd Filetype typescript set filetype=javascript
-
   autocmd Filetype javascript packadd ultisnips
   autocmd Filetype javascript packadd ale
 
