@@ -49,7 +49,7 @@ call minpac#add('mhinz/vim-sayonara')
 call minpac#add('omnisharp/omnisharp-vim', {'type': 'opt'})
 call minpac#add('omnisharp/omnisharp-roslyn', {'type': 'opt'})
 call minpac#add('sheerun/vim-polyglot')
-call minpac#add('sirver/ultisnips', {'type': 'opt'})
+call minpac#add('sirver/ultisnips')
 call minpac#add('w0rp/ale', {'type': 'opt'})
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('haishanh/night-owl.vim')
@@ -71,10 +71,6 @@ nnoremap <Leader>q :Sayonara!<cr>
 nnoremap <Leader>Q :bd<cr>
 nnoremap <c-z> :call term#defaultTerm()<cr>i
 nnoremap <Leader>rc :e $MYVIMRC<cr>
-nnoremap <Leader>h <c-w>h
-nnoremap <Leader>l <c-w>l
-nnoremap <Leader>j <c-w>j
-nnoremap <Leader>k <c-w>k
 nnoremap <c-s> :write<cr>
 
 tnoremap <LocalLeader><LocalLeader> <c-\><c-n>
@@ -89,7 +85,6 @@ augroup END
 augroup csharp
   autocmd!
   autocmd Filetype cs packadd omnisharp-vim
-  autocmd Filetype cs packadd ultisnips
   autocmd Filetype cs packadd vim-csharp
   autocmd Filetype cs packadd ale
 augroup END
@@ -102,6 +97,7 @@ augroup typescript
   autocmd Filetype typescript nnoremap <buffer> <LocalLeader>gt :TSTypeDef<cr>
   autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fm :TSGetDocSymbols<cr>
   autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fs :TSGetWorkspaceSymbols<cr>
+  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>ca :TSGetCodeFix<cr>
   autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fx :TSImport<cr>
   autocmd Filetype typescript nnoremap <buffer> <LocalLeader>/ :TSSearchFZF<cr>
 augroup END
@@ -109,22 +105,14 @@ augroup END
 augroup quickfix
   autocmd!
   autocmd Filetype qf 20wincmd_
-  autocmd Filetype qf nnoremap <buffer> <esc> :silent! cclose \| lclose<cr>
-  autocmd BufLeave * if &buftype == "quickfix" && (getwininfo(win_getid())[0]['loclist'] == 0) | cclose | else | lclose | endif
 augroup END
 
 augroup javascript
   autocmd!
-  autocmd Filetype javascript packadd ultisnips
   autocmd Filetype javascript packadd ale
 
   autocmd Filetype javascript nnoremap <buffer> <LocalLeader>gd <c-]>
   autocmd Filetype javascript nnoremap <buffer> <LocalLeader>vgd :vs<cr><c-]>
-augroup END
-
-augroup css
-  autocmd!
-  autocmd Filetype css packadd ultisnips
 augroup END
 
 augroup xml
