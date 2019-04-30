@@ -1,153 +1,118 @@
-" settings
-set noswapfile
+﻿call plug#begin()
+  Plug 'haishanh/night-owl.vim'
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'sirver/ultisnips'
+  Plug 'omnisharp/omnisharp-vim'
+  Plug 'vim-scripts/dbext.vim'
+  Plug 'w0rp/ale'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'tpope/vim-fugitive'
+
+  Plug 'tadesegha/vim-csharp'
+  Plug 'tadesegha/vim-term'
+
+  Plug 'HerringtonDarkholme/yats.vim'
+  " Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+call plug#end()
+
+let maplocalleader = ','
+
+set number
 set relativenumber
-set tabstop=2
-set shiftwidth=2
+set listchars=eol:¬,trail:·,tab:»\
+set noswapfile
 set hidden
 set ignorecase
 set smartcase
 set smartindent
-set splitright
-set numberwidth=2
-set listchars=eol:¬,trail:·,tab:»\
 set list
 set expandtab
-set background=dark
+set shiftwidth=2
+set tabstop=2
+set completeopt=menu,noinsert
+set nowrap
+set nohlsearch
 
-silent! colorscheme night-owl
-
-if (executable('ag'))
-  set grepprg=ag\ --nogroup\ --nocolor
-  let $FZF_DEFAULT_COMMAND = 'ag -g . --ignore build --ignore bin --ignore obj --ignore node_modules'
-endif
-
-" ale settings
-let g:ale_linters = { 'cs': ['OmniSharp'], 'javascript': ['eslint'] }
-let g:ale_fixers = {
-      \'javascript': ['eslint', 'prettier'],
-      \'html': [],
-      \'*': ['remove_trailing_lines', 'trim_whitespace']
-      \}
-let g:ale_fix_on_save = 1
-
-" ultisnips settings
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-
-" omnisharp settings
-let g:OmniSharp_timeout = 5
-
-" minpac settings
-packadd minpac
-call minpac#init()
-call minpac#add('tadesegha/vim-Term')
-call minpac#add('tadesegha/vim-csharp', {'type': 'opt'})
-call minpac#add('junegunn/fzf')
-call minpac#add('junegunn/fzf.vim')
-call minpac#add('k-takata/minpac', {'type': 'opt'})
-call minpac#add('mhinz/vim-sayonara')
-call minpac#add('omnisharp/omnisharp-vim', {'type': 'opt'})
-call minpac#add('omnisharp/omnisharp-roslyn', {'type': 'opt'})
-call minpac#add('sheerun/vim-polyglot')
-call minpac#add('sirver/ultisnips')
-call minpac#add('w0rp/ale', {'type': 'opt'})
-call minpac#add('tpope/vim-fugitive')
-call minpac#add('haishanh/night-owl.vim')
-call minpac#add('HerringtonDarkholme/yats.vim')
-call minpac#add('mhartington/nvim-typescript', { 'do': './install.sh' })
-
-let mapleader = " "
-let maplocalleader = ","
-
-" noop key mappings
-nnoremap :w<cr> :throw "you should be using <c-s> to save"<cr>
-
-" key mappings
-nnoremap <Leader><Leader> <c-^>
+nnoremap <space> :
 nnoremap <Leader>e :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
-nnoremap <esc> :nohlsearch<cr>
-nnoremap <Leader>q :Sayonara!<cr>
-nnoremap <Leader>Q :bd<cr>
-nnoremap <c-z> :call term#defaultTerm()<cr>i
-nnoremap <Leader>rc :e $MYVIMRC<cr>
-nnoremap <c-s> :write<cr>
+nnoremap <Leader><Leader> <c-^>
+tnoremap <Leader><Leader> <c-\><c-n>
+nnoremap <Leader>t :call term#goToTerm('shell')<cr>a
+nnoremap <Leader>/ :set hlsearch!<cr>
 
-tnoremap <LocalLeader><LocalLeader> <c-\><c-n>
+nnoremap <Leader>d :call DatabaseBuffer()<cr>
+nnoremap L zL
+nnoremap H zH
 
-imap <c-s> <esc><c-s>
+colorscheme night-owl
 
-augroup help
-  autocmd!
-  autocmd BufEnter * if &buftype == "help" | wincmd L | endif
-augroup END
+" FZF settings
+let $FZF_DEFAULT_COMMAND = 'rg --files --glob !*node_module* --glob !*bin* --glob !*obj* --glob !*build* --glob !*packages*'
 
-augroup csharp
-  autocmd!
-  autocmd Filetype cs packadd omnisharp-vim
-  autocmd Filetype cs packadd vim-csharp
-  autocmd Filetype cs packadd ale
-augroup END
+" nvim-typescript settings
+let $NVIM_NODE_LOG_FILE = '/tmp/nvim-node.log'
+let $NVIM_NODE_LOG_LEVEL = 'warn'
 
+" dbext settings
+let g:dbext_default_profile_sqlServer = 'type=SQLSRV:integratedlogin=1:srvname=localhost:dbname=gcts_nominations'
+let g:dbext_default_profile = 'sqlServer'
+
+" vim-term settings
+let g:termShell = 'powershell'
+
+" ale settings
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+" omnisharp settings
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_start_server = 0
+let g:OmniSharp_port = 2000
+
+" deoplete settings
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('sources', { 'cs': ['omnisharp'] })
+
+" typescript mappings
 augroup typescript
   autocmd!
-
-  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fu :TSRef<cr>
-  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>gd :TSDef<cr>
-  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>gt :TSTypeDef<cr>
-  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fm :TSGetDocSymbols<cr>
-  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fs :TSGetWorkspaceSymbols<cr>
-  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>ca :TSGetCodeFix<cr>
-  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>fx :TSImport<cr>
-  autocmd Filetype typescript nnoremap <buffer> <LocalLeader>/ :TSSearchFZF<cr>
+  autocmd FileType typescript nnoremap <buffer> <LocalLeader>gd m':TSDef<cr>
+  autocmd FileType typescript nnoremap <buffer> <LocalLeader>ga :call GoToAlternateFile()<cr>
+  autocmd FileType typescript nnoremap <buffer> <LocalLeader>fs :TSGetDocSymbols<cr>
+  autocmd FileType typescript nnoremap <buffer> <LocalLeader>fu :TSRefs<cr>
 augroup END
 
 augroup quickfix
   autocmd!
-  autocmd Filetype qf 20wincmd_
+  autocmd FileType qf nnoremap <buffer> q :ccl<cr>
 augroup END
 
-augroup javascript
-  autocmd!
-  autocmd Filetype javascript packadd ale
+function! GoToAlternateFile()
+  let curr = expand("%")
+  let tsPattern = '.ts$'
+  let htmlPattern = '.html$'
 
-  autocmd Filetype javascript nnoremap <buffer> <LocalLeader>gd <c-]>
-  autocmd Filetype javascript nnoremap <buffer> <LocalLeader>vgd :vs<cr><c-]>
-augroup END
-
-augroup xml
-  autocmd!
-  autocmd FileType xml nnoremap <buffer> <Leader>cf :%! python -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"<cr>
-augroup END
-
-augroup json
-  autocmd!
-  autocmd FileType json nnoremap <buffer> <LocalLeader>cf :%! python -m json.tool<cr>
-augroup END
-
-" utility functions
-function! FindUpwardInPath(absolutePath, pattern)
-  let components = split(a:absolutePath, '\')
-
-  let parent = components[0]
-  for component in components[1: ]
-    let parent = parent . '\' . component
-    let file = expand(parent . '\' . a:pattern)
-    if (filereadable(file))
-      return file
-    endif
-  endfor
-
-  echoerr "file matching pattern not found. pattern: " . pattern . " | path: " . absolutePath
+  if match(curr, tsPattern) != -1
+    let alternate = substitute(curr, tsPattern, ".html", "")
+    execute "edit " . alternate
+  elseif match(curr, htmlPattern) != -1
+    let alternate = substitute(curr, htmlPattern, ".ts", "")
+    execute "edit " . alternate
+  endif
 endfunction
 
-let initLocal = expand('<sfile>:h') . '/init.local.vim'
-if (filereadable(initLocal))
-  execute "source " . initLocal
-endif
+function! CsharpBuild()
 
-if has('win32') || has('win64')
-  execute "source " . expand('<sfile>:h') . '/init.windows.vim'
-else
-  execute "source " . expand('<sfile>:h') . '/init.mac.vim'
-endif
+endfunction
+
+function! DatabaseBuffer()
+  if bufexists('databaseBuffer')
+    execute "buffer databaseBuffer"
+  else
+    e databaseBuffer
+    set buftype=nofile
+    set filetype=sql
+    nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
+  endif
+endfunction

@@ -1,5 +1,6 @@
 " node plugins
-call remote#host#RegisterPlugin('node', 'C:/Users/tolu_adesegha/AppData/Local/nvim/pack/minpac/start/nvim-typescript/rplugin/node/nvim_typescript', [
+call remote#host#RegisterPlugin('node', 'C:/Users/tolu_adesegha/AppData/Local/nvim/plugged/nvim-typescript/rplugin/node/nvim_typescript', [
+      \ {'sync': v:false, 'name': 'TextChangedP', 'type': 'autocmd', 'opts': {'pattern': '*'}},
       \ {'sync': v:false, 'name': 'TSType', 'type': 'command', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSTypeDef', 'type': 'command', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSImport', 'type': 'command', 'opts': {}},
@@ -12,6 +13,7 @@ call remote#host#RegisterPlugin('node', 'C:/Users/tolu_adesegha/AppData/Local/nv
       \ {'sync': v:false, 'name': 'TSEditConfig', 'type': 'command', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSGetDocSymbols', 'type': 'command', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSGetWorkspaceSymbols', 'type': 'command', 'opts': {'nargs': '*'}},
+      \ {'sync': v:false, 'name': 'TSOrganizeImports', 'type': 'command', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSGetDiagnostics', 'type': 'command', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSGetCodeFix', 'type': 'command', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSStart', 'type': 'command', 'opts': {}},
@@ -24,7 +26,6 @@ call remote#host#RegisterPlugin('node', 'C:/Users/tolu_adesegha/AppData/Local/nv
       \ {'sync': v:true, 'name': 'TSGetWorkspaceSymbolsFunc', 'type': 'function', 'opts': {}},
       \ {'sync': v:true, 'name': 'TSGetProjectInfoFunc', 'type': 'function', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSEchoMessage', 'type': 'function', 'opts': {}},
-      \ {'sync': v:true, 'name': 'TSGetErrorCountForFile', 'type': 'function', 'opts': {}},
       \ {'sync': v:true, 'name': 'TSGetServerPath', 'type': 'function', 'opts': {}},
       \ {'sync': v:true, 'name': 'TSGetVersion', 'type': 'function', 'opts': {}},
       \ {'sync': v:false, 'name': 'TSOnBufEnter', 'type': 'function', 'opts': {}},
