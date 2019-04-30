@@ -1,3 +1,10 @@
+snippet ctor
+public `!v expand("%:t:r")`($1)
+{
+	$0
+}
+endsnippet
+
 snippet templog
 private void TempLog(string message) => System.IO.File.AppendAllLines(@"c:\users\tolu_adesegha\temp\log.txt", new[] {message});
 endsnippet
@@ -13,22 +20,6 @@ snippet out
 System.Console.WriteLine($1);$0
 endsnippet
 
-snippet mf "mock field"
-private Mock<I${1/^./\u$0/}$0> ${1:name};
-endsnippet
-
-snippet f "field"
-private ${1:Type} ${1/^./\l$0/}$0;
-endsnippet
-
-snippet cm "create mock"
-$1 = CreateMock<I${1/^./\u$0/}$0>();
-endsnippet
-
-snippet ms "mock setup"
-${1:mockObject}.Setup(x => x.${2:Method}(${3:parameters})).Returns(${4:returnObject});
-endsnippet
-
 snippet t "test"
 [Test, Description(""), Category("Unit")]
 public void ${1:ShouldDoSomething}()
@@ -38,7 +29,6 @@ public void ${1:ShouldDoSomething}()
 endsnippet
 
 snippet { "close bracket" i
-
 {
 	$0
 }
