@@ -120,3 +120,8 @@ if !(has('win32') || has('win64'))
   let g:OmniSharp_server_use_mono = 1
   let g:OmniSharp_server_path = expand('~/.omnisharp/omnisharp-roslyn/artifacts/publish/OmniSharp.Http.Driver/mono/OmniSharp.exe')
 endif
+
+let localInitFile = expand('<sfile>:h') . "/init.local.vim"
+if filereadable(localInitFile)
+  execute "source " . localInitFile
+endif
