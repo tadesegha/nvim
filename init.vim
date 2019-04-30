@@ -1,4 +1,4 @@
-﻿call plug#begin()
+call plug#begin()
   Plug 'haishanh/night-owl.vim'
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
@@ -7,13 +7,15 @@
   Plug 'vim-scripts/dbext.vim'
   Plug 'w0rp/ale'
   Plug 'Shougo/deoplete.nvim'
+  Plug 'mxw/vim-jsx'
+  Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-fugitive'
 
   Plug 'tadesegha/vim-csharp'
   Plug 'tadesegha/vim-term'
 
   Plug 'HerringtonDarkholme/yats.vim'
-  " Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+  Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 call plug#end()
 
 let maplocalleader = ','
@@ -40,9 +42,8 @@ nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader><Leader> <c-^>
 tnoremap <Leader><Leader> <c-\><c-n>
 nnoremap <Leader>t :call term#goToTerm('shell')<cr>a
-nnoremap <Leader>/ :set hlsearch!<cr>
-
 nnoremap <Leader>d :call DatabaseBuffer()<cr>
+nnoremap <Leader>/ :set hlsearch!<cr>
 nnoremap L zL
 nnoremap H zH
 
@@ -59,16 +60,11 @@ let $NVIM_NODE_LOG_LEVEL = 'warn'
 let g:dbext_default_profile_sqlServer = 'type=SQLSRV:integratedlogin=1:srvname=localhost:dbname=gcts_nominations'
 let g:dbext_default_profile = 'sqlServer'
 
-" vim-term settings
-let g:termShell = 'powershell'
-
 " ale settings
 let g:ale_linters = { 'cs': ['OmniSharp'] }
 
 " omnisharp settings
 let g:OmniSharp_selector_ui = 'fzf'
-let g:OmniSharp_start_server = 0
-let g:OmniSharp_port = 2000
 
 " deoplete settings
 let g:deoplete#enable_at_startup = 1
@@ -86,7 +82,6 @@ augroup END
 augroup quickfix
   autocmd!
   autocmd FileType qf nnoremap <buffer> q :ccl<cr>
-augroup END
 
 function! GoToAlternateFile()
   let curr = expand("%")
@@ -102,10 +97,6 @@ function! GoToAlternateFile()
   endif
 endfunction
 
-function! CsharpBuild()
-
-endfunction
-
 function! DatabaseBuffer()
   if bufexists('databaseBuffer')
     execute "buffer databaseBuffer"
@@ -113,6 +104,19 @@ function! DatabaseBuffer()
     e databaseBuffer
     set buftype=nofile
     set filetype=sql
-    nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
+    " nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
   endif
 endfunction
+
+" ========= Windows OS specific settings ============
+if has('win32') || has('win64')
+  " vim-term settings
+  let g:termShell = 'powershell'
+endif
+
+" ========= Mac OS specific settings ============
+if !(has('win32') || has('win64'))
+  " omnisharp settings
+  let g:OmniSharp_server_use_mono = 1
+  let g:OmniSharp_server_path = expand('~/.omnisharp/omnisharp-roslyn/artifacts/publish/OmniSharp.Http.Driver/mono/OmniSharp.exe')
+endif
