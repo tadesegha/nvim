@@ -9,6 +9,7 @@ call plug#begin()
   Plug 'Shougo/deoplete.nvim'
   Plug 'mxw/vim-jsx'
   Plug 'pangloss/vim-javascript'
+  Plug 'tpope/vim-fugitive'
 
   Plug 'tadesegha/vim-csharp'
   Plug 'tadesegha/vim-term'
@@ -103,8 +104,9 @@ function! DatabaseBuffer()
     execute "buffer databaseBuffer"
   else
     e databaseBuffer
+    set buftype=nofile
     set filetype=sql
-    " set buftype=nofile
+    " nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
   endif
 endfunction
 
