@@ -104,7 +104,7 @@ function! DatabaseBuffer()
     e databaseBuffer
     set buftype=nofile
     set filetype=sql
-    " nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
+    nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
   endif
 endfunction
 
