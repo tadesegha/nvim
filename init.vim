@@ -15,7 +15,7 @@ call plug#begin()
   Plug 'tadesegha/vim-term'
 
   Plug 'HerringtonDarkholme/yats.vim'
-  Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+  " Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 call plug#end()
 
 let maplocalleader = ','
