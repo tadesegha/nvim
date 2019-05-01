@@ -56,10 +56,6 @@ let $FZF_DEFAULT_COMMAND = 'rg --files --glob !*node_module* --glob !*bin* --glo
 let $NVIM_NODE_LOG_FILE = '/tmp/nvim-node.log'
 let $NVIM_NODE_LOG_LEVEL = 'warn'
 
-" dbext settings
-let g:dbext_default_profile_sqlServer = 'type=SQLSRV:integratedlogin=1:srvname=localhost:dbname=gcts_nominations'
-let g:dbext_default_profile = 'sqlServer'
-
 " ale settings
 let g:ale_linters = { 'cs': ['OmniSharp'] }
 
