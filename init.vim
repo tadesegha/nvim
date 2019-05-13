@@ -46,6 +46,7 @@ nnoremap <Leader>d :call DatabaseBuffer()<cr>
 nnoremap <Leader>/ :set hlsearch!<cr>
 nnoremap L zL
 nnoremap H zH
+nnoremap <LocalLeader><LocalLeader> :ll<cr>
 
 colorscheme night-owl
 
@@ -56,10 +57,6 @@ let $FZF_DEFAULT_COMMAND = 'rg --files --glob !*node_module* --glob !*bin* --glo
 let $NVIM_NODE_LOG_FILE = '/tmp/nvim-node.log'
 let $NVIM_NODE_LOG_LEVEL = 'warn'
 
-" dbext settings
-let g:dbext_default_profile_sqlServer = 'type=SQLSRV:integratedlogin=1:srvname=localhost:dbname=gcts_nominations'
-let g:dbext_default_profile = 'sqlServer'
-
 " ale settings
 let g:ale_linters = { 'cs': ['OmniSharp'] }
 
@@ -68,7 +65,10 @@ let g:OmniSharp_selector_ui = 'fzf'
 
 " deoplete settings
 let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('sources', { 'cs': ['omnisharp'] })
+call deoplete#custom#option({
+      \ 'sources': { 'cs': ['omnisharp'] },
+      \ 'auto_complete': v:false
+      \ })
 
 " typescript mappings
 augroup typescript
@@ -104,7 +104,7 @@ function! DatabaseBuffer()
     e databaseBuffer
     set buftype=nofile
     set filetype=sql
-    " nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
+    nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
   endif
 endfunction
 
