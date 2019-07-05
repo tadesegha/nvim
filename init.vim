@@ -13,9 +13,6 @@ call plug#begin()
 
   Plug 'tadesegha/vim-csharp'
   Plug 'tadesegha/vim-term'
-
-  Plug 'HerringtonDarkholme/yats.vim'
-  " Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 call plug#end()
 
 let maplocalleader = ','
@@ -110,17 +107,21 @@ endfunction
 
 " ========= Windows OS specific settings ============
 if has('win32') || has('win64')
-  " vim-term settings
-  let g:termShell = 'powershell'
+  let windowsrc = expand('<sfile>:h') . "/init.windows.vim"
+  if filereadable(windowsrc)
+    execute "source " . windowsrc
+  endif
 endif
 
 " ========= Mac OS specific settings ============
 if !(has('win32') || has('win64'))
-  " omnisharp settings
-  let g:OmniSharp_server_use_mono = 1
-  let g:OmniSharp_server_path = expand('~/.omnisharp/omnisharp-roslyn/artifacts/publish/OmniSharp.Http.Driver/mono/OmniSharp.exe')
+  let macrc = expand('<sfile>:h') . "/init.mac.vim"
+  if filereadable(macrc)
+    execute "source " . macrc
+  endif
 endif
 
+" ========= Local settings ============
 let localInitFile = expand('<sfile>:h') . "/init.local.vim"
 if filereadable(localInitFile)
   execute "source " . localInitFile
