@@ -32,6 +32,7 @@ set tabstop=2
 set completeopt=menu,noinsert
 set nowrap
 set nohlsearch
+set cmdheight=2
 
 nnoremap <space> :
 nnoremap <Leader>e :FZF<cr>

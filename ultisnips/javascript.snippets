@@ -58,3 +58,13 @@ endsnippet
 snippet in "import module"
 import \{ ${1:object} \} from "${2:location}";
 endsnippet
+
+snippet rc "react component"
+import React from 'react';
+
+const `!v expand('%:t:r')` = () => {
+  return <p>`!v expand('%:t:r')` Component</p>;
+}
+
+export default `!v expand('%:t:r')`;
+endsnippet
