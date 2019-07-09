@@ -52,7 +52,7 @@ colorscheme night-owl
 let $FZF_DEFAULT_COMMAND = 'rg --files --glob !*node_module* --glob !*bin* --glob !*obj* --glob !*build* --glob !*packages*'
 
 " nvim-typescript settings
-let $NVIM_NODE_LOG_FILE = '/tmp/nvim-node.log'
+let $NVIM_NODE_LOG_FILE = 'c:\users\tolu_adesegha\temp\nvim-node.log'
 let $NVIM_NODE_LOG_LEVEL = 'warn'
 
 " ale settings
@@ -75,6 +75,17 @@ augroup typescript
   autocmd FileType typescript nnoremap <buffer> <LocalLeader>ga :call GoToAlternateFile()<cr>
   autocmd FileType typescript nnoremap <buffer> <LocalLeader>fs :TSGetDocSymbols<cr>
   autocmd FileType typescript nnoremap <buffer> <LocalLeader>fu :TSRefs<cr>
+augroup END
+
+augroup sql
+  autocmd!
+  autocmd FileType sql nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
+augroup END
+
+augroup json
+  autocmd!
+
+  autocmd FileType json nnoremap <buffer> <LocalLeader>cf :%!python -m json.tool<cr>
 augroup END
 
 augroup quickfix
@@ -100,11 +111,14 @@ function! DatabaseBuffer()
     execute "buffer databaseBuffer"
   else
     e databaseBuffer
-    set buftype=nofile
-    set filetype=sql
-    nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
   endif
+
+  set buftype=nofile
+  set filetype=sql
+  nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
 endfunction
+
+execute 'source ' . expand('<sfile>:h') . '/utilities.vim'
 
 " ========= Windows OS specific settings ============
 if has('win32') || has('win64')
