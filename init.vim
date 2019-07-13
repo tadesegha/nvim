@@ -10,6 +10,7 @@ call plug#begin()
   Plug 'mxw/vim-jsx'
   Plug 'pangloss/vim-javascript'
   Plug 'tpope/vim-fugitive'
+  Plug 'alvan/vim-closetag'
 
   Plug 'tadesegha/vim-csharp'
   Plug 'tadesegha/vim-term'
