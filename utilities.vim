@@ -10,3 +10,16 @@ function! GAnnotate(...)
   execute '! git annotate % -L ' . startLine . ',' . endLine
 endfunction
 command! -nargs=? GAnnotate :call GAnnotate(<args>)
+
+function! DatabaseBuffer()
+  if bufexists('databaseBuffer')
+    execute "buffer databaseBuffer"
+  else
+    e databaseBuffer
+  endif
+
+  set buftype=nofile
+  set filetype=sql
+  nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
+endfunction
+

@@ -12,6 +12,7 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'leafgarland/typescript-vim'
   Plug 'PProvost/vim-ps1'
+  Plug 'alvan/vim-closetag'
 
   Plug 'tadesegha/vim-csharp'
   Plug 'tadesegha/vim-term'
@@ -93,32 +94,6 @@ augroup END
 augroup quickfix
   autocmd!
   autocmd FileType qf nnoremap <buffer> q :ccl<cr>
-
-function! GoToAlternateFile()
-  let curr = expand("%")
-  let tsPattern = '.ts$'
-  let htmlPattern = '.html$'
-
-  if match(curr, tsPattern) != -1
-    let alternate = substitute(curr, tsPattern, ".html", "")
-    execute "edit " . alternate
-  elseif match(curr, htmlPattern) != -1
-    let alternate = substitute(curr, htmlPattern, ".ts", "")
-    execute "edit " . alternate
-  endif
-endfunction
-
-function! DatabaseBuffer()
-  if bufexists('databaseBuffer')
-    execute "buffer databaseBuffer"
-  else
-    e databaseBuffer
-  endif
-
-  set buftype=nofile
-  set filetype=sql
-  nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
-endfunction
 
 execute 'source ' . expand('<sfile>:h') . '/utilities.vim'
 
