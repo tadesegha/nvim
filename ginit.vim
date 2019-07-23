@@ -1,1 +1,1 @@
-GuiFont! Consolas:h14
+GuiFont! Fira Code:h8

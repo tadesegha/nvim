@@ -36,6 +36,7 @@ set completeopt=menu,noinsert
 set nowrap
 set nohlsearch
 set cmdheight=2
+set linespace=4
 
 nnoremap <space> :
 nnoremap <Leader>e :FZF<cr>
@@ -50,6 +51,7 @@ nnoremap H zH
 nnoremap <LocalLeader><LocalLeader> :ll<cr>
 
 colorscheme night-owl
+highlight LineNr guifg=#f15d2a
 
 " FZF settings
 let $FZF_DEFAULT_COMMAND = 'rg --files --glob !*node_module* --glob !*bin* --glob !*obj* --glob !*build* --glob !*packages*'
