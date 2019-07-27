@@ -37,6 +37,7 @@ set nowrap
 set nohlsearch
 set cmdheight=2
 set linespace=4
+set splitright
 
 nnoremap <space> :
 nnoremap <Leader>e :FZF<cr>
