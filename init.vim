@@ -36,7 +36,7 @@ set completeopt=menu,noinsert
 set nowrap
 set nohlsearch
 set cmdheight=2
-set linespace=4
+set linespace=7
 
 nnoremap <space> :
 nnoremap <Leader>e :FZF<cr>
