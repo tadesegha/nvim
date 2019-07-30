@@ -37,6 +37,7 @@ set nowrap
 set nohlsearch
 set cmdheight=2
 set linespace=7
+set splitright
 
 nnoremap <space> :
 nnoremap <Leader>e :FZF<cr>
@@ -62,6 +63,9 @@ let $NVIM_NODE_LOG_LEVEL = 'warn'
 
 " ale settings
 let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+" closetag settings
+let g:closetag_filetypes = 'javascript.jsx'
 
 " omnisharp settings
 let g:OmniSharp_selector_ui = 'fzf'
