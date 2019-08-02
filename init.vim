@@ -38,6 +38,7 @@ set nohlsearch
 set cmdheight=2
 set linespace=7
 set splitright
+set timeoutlen=250
 
 nnoremap <space> :
 nnoremap <Leader>e :FZF<cr>
@@ -65,7 +66,7 @@ let $NVIM_NODE_LOG_LEVEL = 'warn'
 let g:ale_linters = { 'cs': ['OmniSharp'] }
 
 " closetag settings
-let g:closetag_filetypes = 'javascript.jsx'
+let g:closetag_filetypes = 'javascript.jsx, xml'
 
 " omnisharp settings
 let g:OmniSharp_selector_ui = 'fzf'
