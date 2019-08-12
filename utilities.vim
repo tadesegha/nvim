@@ -14,12 +14,15 @@ command! -nargs=? GAnnotate :call GAnnotate(<args>)
 function! DatabaseBuffer()
   if bufexists('databaseBuffer')
     execute "buffer databaseBuffer"
+  elseif bufexists('mssql-cli')
+    execute "buffer mssql-cli"
+    startinsert
   else
     e databaseBuffer
+    set buftype=nofile
+    set filetype=sql
+    nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
   endif
 
-  set buftype=nofile
-  set filetype=sql
-  nnoremap <buffer> <LocalLeader>r :DBExecSQLUnderCursor<cr>
 endfunction
 
