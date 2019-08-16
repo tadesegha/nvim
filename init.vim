@@ -12,7 +12,6 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'leafgarland/typescript-vim'
   Plug 'PProvost/vim-ps1'
-  Plug 'alvan/vim-closetag'
 
   Plug 'tadesegha/vim-csharp'
   Plug 'tadesegha/vim-term'
@@ -51,6 +50,7 @@ nnoremap <Leader>/ :set hlsearch!<cr>
 nnoremap L zL
 nnoremap H zH
 nnoremap <LocalLeader><LocalLeader> :ll<cr>
+nnoremap <Leader>q :ccl<cr>
 
 colorscheme night-owl
 highlight LineNr guifg=#f15d2a
@@ -64,9 +64,6 @@ let $NVIM_NODE_LOG_LEVEL = 'warn'
 
 " ale settings
 let g:ale_linters = { 'cs': ['OmniSharp'] }
-
-" closetag settings
-let g:closetag_filetypes = 'javascript.jsx, xml'
 
 " omnisharp settings
 let g:OmniSharp_selector_ui = 'fzf'
