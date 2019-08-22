@@ -78,6 +78,7 @@ call deoplete#custom#option({
 
 " prettier settings
 let g:prettier#exec_cmd_async = 1
+let g:prettier#config#print_width = 120
 augroup prettier
   autocmd!
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
