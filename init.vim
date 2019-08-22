@@ -12,6 +12,7 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'leafgarland/typescript-vim'
   Plug 'PProvost/vim-ps1'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
   Plug 'tadesegha/vim-csharp'
   Plug 'tadesegha/vim-term'
@@ -74,6 +75,13 @@ call deoplete#custom#option({
       \ 'sources': { 'cs': ['omnisharp'] },
       \ 'auto_complete': v:false
       \ })
+
+" prettier settings
+let g:prettier#exec_cmd_async = 1
+augroup prettier
+  autocmd!
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+augroup END
 
 " typescript mappings
 augroup typescript
