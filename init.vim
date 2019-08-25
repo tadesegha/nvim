@@ -13,6 +13,8 @@ call plug#begin()
   Plug 'leafgarland/typescript-vim'
   Plug 'PProvost/vim-ps1'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'mattn/emmet-vim'
 
   Plug 'tadesegha/vim-csharp'
   Plug 'tadesegha/vim-term'
@@ -52,6 +54,10 @@ nnoremap L zL
 nnoremap H zH
 nnoremap <LocalLeader><LocalLeader> :ll<cr>
 nnoremap <Leader>q :ccl<cr>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 colorscheme night-owl
 highlight LineNr guifg=#f15d2a
