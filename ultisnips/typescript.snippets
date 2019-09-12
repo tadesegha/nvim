@@ -1,0 +1,70 @@
+snippet { "expand brace"
+{
+	$0
+}
+endsnippet
+
+snippet ts "test setup"
+beforeEach(() => {
+	$0
+});
+endsnippet
+
+snippet nie
+throw "not yet implemented";
+endsnippet
+
+snippet tf
+describe('${1:describe}', () => {
+	$0
+});
+endsnippet
+
+snippet t
+it('${1:should}', () => {
+	$0
+});
+endsnippet
+
+snippet log "log"
+console.log($0);
+endsnippet
+
+snippet af "define an anonymous function" i
+() => $0
+endsnippet
+
+snippet nf "define a named function"
+const ${1:name} = (${2}) => {
+	$0
+}
+endsnippet
+
+snippet react "boiler plate for a react component"
+import React, { Component } from 'react';
+import { Text } from 'react-native';
+
+export default class ${1:Component} extends Component {
+	render = () => (
+		<Text>This is the $1 component</Text>
+	)
+}
+endsnippet
+
+snippet id "import default"
+import ${1:object} from "${2:location}";
+endsnippet
+
+snippet in "import module"
+import \{ ${1:object} \} from "${2:location}";
+endsnippet
+
+snippet rc "react component"
+import React from 'react';
+
+const `!v expand('%:t:r')` = () => {
+  return <p>`!v expand('%:t:r')` Component</p>;
+}
+
+export default `!v expand('%:t:r')`;
+endsnippet

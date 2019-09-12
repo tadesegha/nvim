@@ -60,7 +60,9 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 colorscheme night-owl
+
 highlight LineNr guifg=#f15d2a
+highlight SpellBad cterm=underline ctermbg=none
 
 " FZF settings
 let $FZF_DEFAULT_COMMAND = 'rg --files --glob !*node_module* --glob !*bin* --glob !*obj* --glob !*build* --glob !*packages*'
